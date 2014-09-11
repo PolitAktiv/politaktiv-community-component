@@ -1,7 +1,21 @@
+//make java tasks available
 apply plugin: 'java'
 
-dependencies {
-    compile files('./src/main/resources/portal-service.jar')
-    compile files('./src/main/resources/portlet-2.0.jar')
+// use the central maven repository to get dependent files
+repositories {
+    mavenCentral()
 }
+
+//define files to get from repository
+dependencies {
+    compile 'javax.portlet:portlet-api:2.0'
+    compile 'com.liferay.portal:portal-service:6.2.1'
+}
+
+//How to find out the dependency names:
+// - browse to http://search.maven.org/
+// - search and look for your required jar-file
+// - in the 'Latest Version'-culumn, click on the version number
+// - in the "Dependency Information" section, click on "Gradle/Grails"
+// - copy & paste
 
