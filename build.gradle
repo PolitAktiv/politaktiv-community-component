@@ -1,3 +1,6 @@
+
+/* ---------- set dependencies ------------- */
+
 //make java tasks available
 apply plugin: 'java'
 
@@ -11,11 +14,22 @@ dependencies {
     compile 'javax.portlet:portlet-api:2.0'
     compile 'com.liferay.portal:portal-service:6.2.1'
 }
+/*How to find out the dependency names:
+ * 
+ *- browse to http://search.maven.org/
+ *- search and look for your required jar-file
+ *- in the 'Latest Version'-culumn, click on the version number
+ *- in the "Dependency Information" section, click on "Gradle/Grails"
+ *- copy & paste
+*/
 
-//How to find out the dependency names:
-// - browse to http://search.maven.org/
-// - search and look for your required jar-file
-// - in the 'Latest Version'-culumn, click on the version number
-// - in the "Dependency Information" section, click on "Gradle/Grails"
-// - copy & paste
+/* ---------- change java source folder ------------- */
+//default: gradle looks in src/main/java for the code to be compiled
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
