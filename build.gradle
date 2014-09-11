@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 dependencies {
-    compile files('./src/lib/dev/portal-service.jar')
-    compile files('./src/lib/dev/portlet-2.0.jar')
+    compile files('./src/main/resources/portal-service.jar')
+    compile files('./src/main/resources/portlet-2.0.jar')
 }
 
