@@ -3,6 +3,7 @@
 
 //make java tasks available
 apply plugin: 'java'
+apply plugin: 'maven'
 
 // use the central maven repository to get dependent files
 repositories {
@@ -23,13 +24,6 @@ dependencies {
  *- copy & paste
 */
 
-/* ---------- change java source folder ------------- */
-//default: gradle looks in src/main/java for the code to be compiled
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-    }
-}
+
+
