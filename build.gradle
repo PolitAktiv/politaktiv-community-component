@@ -4,6 +4,7 @@
 //make java tasks available
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'signing'
 
 // use the central maven repository to get dependent files
 repositories {
@@ -15,14 +16,82 @@ dependencies {
     compile 'javax.portlet:portlet-api:2.0'
     compile 'com.liferay.portal:portal-service:6.2.1'
 }
-/*How to find out the dependency names:
- * 
- *- browse to http://search.maven.org/
- *- search and look for your required jar-file
- *- in the 'Latest Version'-culumn, click on the version number
- *- in the "Dependency Information" section, click on "Gradle/Grails"
- *- copy & paste
-*/
+
+//Add javadoc and sources
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+//Hook them up
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+//Sign archives
+signing {
+    sign configurations.archives
+}
+
+
+//Uploading
+uploadArchives {
+    repositories {
+      mavenDeployer {
+          
+          
+          pom.version = "0.1.0"
+          pom.artifactId = "politaktiv-community-component"
+          pom.groupId = "org.politaktiv"
+          
+          
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+  
+        repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+          authentication(userName: ossrhUsername, password: ossrhPassword)
+        }
+  
+        snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+          authentication(userName: ossrhUsername, password: ossrhPassword)
+        }
+  
+        pom.project {
+          name 'politaktiv-community-component'
+          packaging 'jar'
+          // optionally artifactId can be defined here
+          description 'provides functionality for several portlets on politaktiv.org'
+          url 'http://www.politaktiv.org'
+  
+          scm {
+            connection 'scm:git:https://github.com/PolitAktiv/politaktiv-community-component.git'
+            developerConnection 'scm:git:https://github.com/PolitAktiv/politaktiv-community-component.git'
+            url 'https://github.com/PolitAktiv/politaktiv-community-component'
+          }
+  
+          
+          licenses {
+            license {
+              name 'The Apache License, Version 2.0'
+              url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+            }
+          }
+  
+          developers {
+            developer {
+              id 'sct'
+              name 'Tobias Scherer'
+              email 'tobias.scherer@integrata-stiftung.de'
+            }
+          }
+        }
+      }
+    }
+  }
 
 
 
