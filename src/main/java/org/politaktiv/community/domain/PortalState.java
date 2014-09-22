@@ -26,12 +26,12 @@ public class PortalState {
     Set<Long> groupIds;
     
     public PortalState(boolean signedIn, String portalUrl, boolean i18n, String i18nPath, String doAsUserId, long userId, Set<Long> groupIds) {
-	this.signedIn = signedIn;
-	this.portalUrl = portalUrl;
-	this.i18n = i18n;
-	this.i18nPath = i18nPath;
-	this.doAsUserId = doAsUserId;
-	this.userId = userId;
+    this.signedIn = signedIn;
+    this.portalUrl = portalUrl;
+    this.i18n = i18n;
+    this.i18nPath = i18nPath;
+    this.doAsUserId = doAsUserId;
+    this.userId = userId;
     this.groupIds = groupIds;
     }
 
@@ -40,7 +40,7 @@ public class PortalState {
     }
 
     public boolean isI18n() {
-	return i18n;
+    return i18n;
     }
 
     public String getI18nPath() {
@@ -62,55 +62,63 @@ public class PortalState {
     public Set<Long> getGroupIds(){
         return groupIds;
     }
+    
+    public void addGroupId(Long groupId){
+        this.groupIds.add(groupId);
+    }
+    
+    public void removeGroupId(Long groupId){
+        this.groupIds.remove(groupId);
+    }
 
     @Override
     public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((doAsUserId == null) ? 0 : doAsUserId.hashCode());
-	result = prime * result + (i18n ? 1231 : 1237);
-	result = prime * result + ((i18nPath == null) ? 0 : i18nPath.hashCode());
-	result = prime * result + ((portalUrl == null) ? 0 : portalUrl.hashCode());
-	result = prime * result + (signedIn ? 1231 : 1237);
-	result = prime * result + (int)userId;
-	result = prime * result + ((groupIds == null) ? 0 : groupIds.hashCode());
-	return result;
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((doAsUserId == null) ? 0 : doAsUserId.hashCode());
+    result = prime * result + (i18n ? 1231 : 1237);
+    result = prime * result + ((i18nPath == null) ? 0 : i18nPath.hashCode());
+    result = prime * result + ((portalUrl == null) ? 0 : portalUrl.hashCode());
+    result = prime * result + (signedIn ? 1231 : 1237);
+    result = prime * result + (int)userId;
+    result = prime * result + ((groupIds == null) ? 0 : groupIds.hashCode());
+    return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-	if (this == obj)
-	    return true;
-	if (obj == null)
-	    return false;
-	if (getClass() != obj.getClass())
-	    return false;
-	PortalState other = (PortalState) obj;
-	if (doAsUserId == null) {
-	    if (other.doAsUserId != null)
-		return false;
-	} else if (!doAsUserId.equals(other.doAsUserId))
-	    return false;
-	if (i18n != other.i18n)
-	    return false;
-	if (i18nPath == null) {
-	    if (other.i18nPath != null)
-		return false;
-	} else if (!i18nPath.equals(other.i18nPath))
-	    return false;
-	if (portalUrl == null) {
-	    if (other.portalUrl != null)
-		return false;
-	} else if (!portalUrl.equals(other.portalUrl))
-	    return false;
-	if (signedIn != other.signedIn)
-	    return false;
-	if (userId != other.getUserId()) {
-		return false;
-	} else if (groupIds != null){
-	    if (!other.getGroupIds().equals(groupIds))
-	        return false;
-	}
-	return true;
+    if (this == obj)
+        return true;
+    if (obj == null)
+        return false;
+    if (getClass() != obj.getClass())
+        return false;
+    PortalState other = (PortalState) obj;
+    if (doAsUserId == null) {
+        if (other.doAsUserId != null)
+        return false;
+    } else if (!doAsUserId.equals(other.doAsUserId))
+        return false;
+    if (i18n != other.i18n)
+        return false;
+    if (i18nPath == null) {
+        if (other.i18nPath != null)
+        return false;
+    } else if (!i18nPath.equals(other.i18nPath))
+        return false;
+    if (portalUrl == null) {
+        if (other.portalUrl != null)
+        return false;
+    } else if (!portalUrl.equals(other.portalUrl))
+        return false;
+    if (signedIn != other.signedIn)
+        return false;
+    if (userId != other.getUserId()) {
+        return false;
+    } else if (groupIds != null){
+        if (!other.getGroupIds().equals(groupIds))
+            return false;
+    }
+    return true;
     }
 }

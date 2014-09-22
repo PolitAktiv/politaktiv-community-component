@@ -1,4 +1,4 @@
-package org.politaktiv.community.application;
+package org.politaktiv.community.domain;
 
 public interface MembershipRequestService {
     
