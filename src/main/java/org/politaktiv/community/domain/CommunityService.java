@@ -1,5 +1,6 @@
 package org.politaktiv.community.domain;
 
+import org.politaktiv.community.application.AfterPageRefreshEvent;
 import org.politaktiv.community.application.CommunityViewContainer;
 import org.politaktiv.community.application.InitializeEvent;
 import org.politaktiv.community.application.JoinEvent;
@@ -26,7 +27,8 @@ public interface CommunityService {
 
     public CommunityViewContainer leaveCommunity(CommunityViewContainer container, LeaveEvent event);
 
-    public CommunityViewContainer requestCommunityMembership(CommunityViewContainer container,
-        RequestMembershipEvent event); 
+    public CommunityViewContainer requestCommunityMembership(CommunityViewContainer container, RequestMembershipEvent event);
+    
+    public CommunityViewContainer refreshCommunity(CommunityViewContainer container, AfterPageRefreshEvent event);
 
 }

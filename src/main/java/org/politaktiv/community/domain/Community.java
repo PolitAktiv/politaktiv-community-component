@@ -38,10 +38,11 @@ public class Community{
 	 * General Community
 	 * @param name
 	 * @param communityId
-	 * @param logoId
+	 * @param logoFolderId
 	 * @param memberCount
 	 * @param friendlyUrl
-	 * @param type
+	 * @param isOpenCommunity
+	 * @param isRestrictedCommunity
 	 */
 	public Community(String name, long communityId, long logoFolderId, int memberCount, String friendlyUrl, 
 	        boolean isOpenCommunity, boolean isRescritedCommunity){
