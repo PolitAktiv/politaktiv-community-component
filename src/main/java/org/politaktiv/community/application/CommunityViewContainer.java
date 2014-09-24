@@ -21,10 +21,14 @@ import org.politaktiv.community.domain.PortalState;
 
 public class CommunityViewContainer {
 
-    List<CommunityView> memberCommunityViews;
-    List<CommunityView> nonMemberOpenCommunityViews;
-    List<CommunityView> openCommunityViews;
-    List<CommunityView> restrictedCommunityViews;
+    /**
+     * for explanation see: documentation/CommunityViews.png
+     */
+    List<CommunityView> memberCommunityViews; 
+    List<CommunityView> nonMemberOpenCommunityViews; 
+    List<CommunityView> openCommunityViews; 
+    List<CommunityView> restrictedCommunityViews; 
+
     long currentCompanyId;
     PortalState portalState;
     String nameToSearch;
