@@ -42,7 +42,7 @@ public class Community{
 	 * @param memberCount
 	 * @param friendlyUrl
 	 * @param isOpenCommunity
-	 * @param isRestrictedCommunity
+	 * @param isRescritedCommunity
 	 */
 	public Community(String name, long communityId, long logoFolderId, int memberCount, String friendlyUrl, 
 	        boolean isOpenCommunity, boolean isRescritedCommunity){
@@ -62,7 +62,8 @@ public class Community{
 	 * @param communityId
 	 * @param memberCount
 	 * @param friendlyUrl
-	 * @param type
+	 * @param isOpenCommunity
+	 * @param isRescritedCommunity
 	 */
 	public Community(String name, long communityId , int memberCount, String friendlyUrl,
 	        boolean isOpenCommunity, boolean isRescritedCommunity){
