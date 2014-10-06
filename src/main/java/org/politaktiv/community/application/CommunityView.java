@@ -14,9 +14,13 @@
 
 package org.politaktiv.community.application;
 
-public class CommunityView {
+import java.io.Serializable;
 
-	private String name;
+public class CommunityView implements Serializable{
+    
+    private static final long serialVersionUID = 6015637851958813367L;
+    
+    private String name;
 	private String id;	
 	private String communityUrl;
 	private String logoUrl;

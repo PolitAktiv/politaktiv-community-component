@@ -14,18 +14,26 @@
 
 package org.politaktiv.community.domain;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.HashSet;
 
-public class PortalState {
+public class PortalState implements Serializable{
+
+
+    private static final long serialVersionUID = -4760869270897244211L;
+    
     boolean signedIn;
     String portalUrl;
     boolean i18n;
     String i18nPath;
     String doAsUserId;
     long userId;
-    Set<Long> groupIds;
+    HashSet<Long> groupIds;
     
-    public PortalState(boolean signedIn, String portalUrl, boolean i18n, String i18nPath, String doAsUserId, long userId, Set<Long> groupIds) {
+    public PortalState(){
+    }
+    
+    public PortalState(boolean signedIn, String portalUrl, boolean i18n, String i18nPath, String doAsUserId, long userId, HashSet<Long> groupIds) {
     this.signedIn = signedIn;
     this.portalUrl = portalUrl;
     this.i18n = i18n;
@@ -59,7 +67,7 @@ public class PortalState {
         return userId;
     }
     
-    public Set<Long> getGroupIds(){
+    public HashSet<Long> getGroupIds(){
         return groupIds;
     }
     

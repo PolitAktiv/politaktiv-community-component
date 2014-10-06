@@ -14,20 +14,22 @@
 
 package org.politaktiv.community.application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.politaktiv.community.domain.PortalState;
 
-public class CommunityViewContainer {
+public class CommunityViewContainer implements Serializable{
 
+    private static final long serialVersionUID = 3823825376596751296L;
     /**
      * for explanation see: documentation/CommunityViews.png
      */
-    List<CommunityView> memberCommunityViews; 
-    List<CommunityView> nonMemberOpenCommunityViews; 
-    List<CommunityView> openCommunityViews; 
-    List<CommunityView> restrictedCommunityViews; 
+    ArrayList<CommunityView> memberCommunityViews; 
+    ArrayList<CommunityView> nonMemberOpenCommunityViews; 
+    ArrayList<CommunityView> openCommunityViews; 
+    ArrayList<CommunityView> restrictedCommunityViews; 
 
     long currentCompanyId;
     PortalState portalState;
