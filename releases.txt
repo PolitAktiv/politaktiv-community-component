@@ -1,0 +1,7 @@
+ReleaseNotes:
+
+10-08-2014
+-----------------------------
+first version of politaktiv-community-component
+- provides functionality for portlets that manage community memberships
+- portlets that use component at the moment: politaktiv-community-select-portlet, politaktiv-easy-participation-portlet
