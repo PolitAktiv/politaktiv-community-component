@@ -7,91 +7,90 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 // use the central maven repository to get dependent files
-repositories {
-    mavenCentral()
-}
+repositories { mavenCentral() }
 
 //define files to get from repository
 dependencies {
-    compile 'javax.portlet:portlet-api:2.0'
-    compile 'com.liferay.portal:portal-service:6.2.1'
+  compile 'javax.portlet:portlet-api:2.0'
+  compile 'com.liferay.portal:portal-service:6.2.1'
 }
 
 //Add javadoc and sources
 task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
+  classifier = 'javadoc'
+  from javadoc
 }
 
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
+  classifier = 'sources'
+  from sourceSets.main.allSource
 }
 
 //Hook them up
-artifacts {
-    archives javadocJar, sourcesJar
-}
+artifacts { archives javadocJar, sourcesJar }
 
 //Sign archives
-signing {
-    sign configurations.archives
-}
+signing { sign configurations.archives }
 
 
 //Uploading
 uploadArchives {
-    repositories {
-      mavenDeployer {
-          
-          
-          pom.version = "0.1.0"
-          pom.artifactId = "politaktiv-community-component"
-          pom.groupId = "org.politaktiv"
-          
-          
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-  
-        repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-          authentication(userName: ossrhUsername, password: ossrhPassword)
+  repositories {
+    mavenDeployer {
+
+
+      pom.version = "0.1.0"
+      pom.artifactId = "politaktiv-community-component"
+      pom.groupId = "org.politaktiv"
+
+
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name 'politaktiv-community-component'
+        packaging 'jar'
+        // optionally artifactId can be defined here
+        description 'provides community functionality for several portlets on politaktiv.org'
+        url 'http://www.politaktiv.org'
+
+        scm {
+          connection 'scm:git:https://github.com/PolitAktiv/politaktiv-community-component.git'
+          developerConnection 'scm:git:https://github.com/PolitAktiv/politaktiv-community-component.git'
+          url 'https://github.com/PolitAktiv/politaktiv-community-component'
         }
-  
-        snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-          authentication(userName: ossrhUsername, password: ossrhPassword)
+
+
+        licenses {
+          license {
+            name 'The Apache License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+          }
         }
-  
-        pom.project {
-          name 'politaktiv-community-component'
-          packaging 'jar'
-          // optionally artifactId can be defined here
-          description 'provides functionality for several portlets on politaktiv.org'
-          url 'http://www.politaktiv.org'
-  
-          scm {
-            connection 'scm:git:https://github.com/PolitAktiv/politaktiv-community-component.git'
-            developerConnection 'scm:git:https://github.com/PolitAktiv/politaktiv-community-component.git'
-            url 'https://github.com/PolitAktiv/politaktiv-community-component'
+
+        developers {
+          developer {
+            id 'sct'
+            name 'Tobias Scherer'
+            email 'tobias.scherer@integrata-stiftung.de'
           }
-  
-          
-          licenses {
-            license {
-              name 'The Apache License, Version 2.0'
-              url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            }
-          }
-  
-          developers {
-            developer {
-              id 'sct'
-              name 'Tobias Scherer'
-              email 'tobias.scherer@integrata-stiftung.de'
-            }
+          developer {
+            id 'mje'
+            name 'Michael Jerger'
+            email 'michael.jerger@integrata-stiftung.de'
           }
         }
       }
     }
   }
+}
 
 
 
